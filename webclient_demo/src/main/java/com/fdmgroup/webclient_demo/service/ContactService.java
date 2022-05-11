@@ -20,4 +20,8 @@ public class ContactService {
     public List<Contact> retrieveContacts() {
         return contactClient.retrieveContacts();
     }
+
+    public Contact retrieveContact(Long contactId) {
+        return contactClient.retrieveContact(contactId);
+    }
 }

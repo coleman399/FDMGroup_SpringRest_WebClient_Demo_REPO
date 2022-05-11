@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class ContactController {
@@ -25,5 +26,12 @@ public class ContactController {
         List<Contact> contacts = contactService.retrieveContacts();
         model.addAttribute("contacts", contacts);
         return "index";
+    }
+
+    @GetMapping("/{id}")
+    public String displayContact(@PathVariable("id") Long contactId, Model model) {
+        Contact foundContact = contactService.retrieveContact(contactId);
+        model.addAttribute("contact", foundContact);
+        return "display-contact";
     }
 }
