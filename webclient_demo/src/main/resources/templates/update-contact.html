@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>🌟 Create Contact 🌟</title>
+    <title>🌟 Update Contact 🌟</title>
     <meta name="description" content="write a description here..." />
     <meta name="keywords" content="search engines use these keywords to find websites" />
     <meta name="author" content="self-explanatory" />
@@ -12,19 +12,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="your_css_file_name_goes_here.css" />
 </head>
 <!--- right click and select open with live server-->
 
 <body>
     <div class="container-fluid">
-        <h1>Create Contact</h1>
-        <form th:action="@{/createContact}" method="post" th:object="${contact}">
+        <h1>Update Contact</h1>
+        <form th:action="@{/updateContact/{id}(id=${contact.contactId})}" method="post" th:object="${contact}">
             <input type="text" th:field="*{firstName}" placeholder="First Name"><br>
             <input type="text" th:field="*{middleName}" placeholder="Middle Name"><br>
             <input type="text" th:field="*{lastName}" placeholder="Last Name"><br>
             <input type="text" th:field="*{phoneNumber}" placeholder="Phone Number"><br>
-            <input type="submit" value="CREATE">
+            <input type="submit" value="UPDATE">
         </form>
     </div>
 </body>

@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ContactController {
-    
+
     private ContactService contactService;
-    
+
     @Autowired
     public ContactController(ContactService contactService) {
         this.contactService = contactService;
@@ -30,12 +30,12 @@ public class ContactController {
     }
 
     @GetMapping("/{id}")
-    public String displayContact(@PathVariable("id") Long contactId, Model model) {
-        Contact foundContact = contactService.retrieveContact(contactId);
+    public String displayContact(@PathVariable("id") Long id, Model model) {
+        Contact foundContact = contactService.retrieveContact(id);
         model.addAttribute("contact", foundContact);
         return "display-contact";
     }
-    
+
     @GetMapping("/createContact")
     public String goToCreateContactPage(Model model) {
         model.addAttribute("contact", new Contact());
@@ -44,7 +44,26 @@ public class ContactController {
 
     @PostMapping("/createContact")
     public String createContact(Model model, Contact contact) {
-        Contact createdContact = contactService.generateContact(contact);
+        contactService.generateContact(contact);
+        return "redirect:/";
+    }
+
+    @GetMapping("/updateContact/{id}")
+    public String updateContact(@PathVariable("id") Long id, Model model) {
+        Contact foundContact = contactService.retrieveContact(id);
+        model.addAttribute("contact", foundContact);
+        return "update-contact";
+    }
+
+    @PostMapping("/updateContact/{id}")
+    public String updateContact(@PathVariable("id") Long id, Contact contact) {
+        contactService.amendContact(id, contact);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteContact/{id}")
+    public String deleteContact(@PathVariable("id") Long id) {
+        contactService.removeContact(id);
         return "redirect:/";
     }
 }

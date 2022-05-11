@@ -12,17 +12,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
         integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
         crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="your_css_file_name_goes_here.css" />
 </head>
 <!--- right click and select open with live server-->
 
 <body>
     <div class="container-fluid">
-        <h1>Contacts</h1>
-        <a th:href="@{/createContact}">create a new contact</a>
-        <ul class="list-group" th:each="contact: ${contacts}">
-            <li class="list-group-item" th:text="${contact}"></li>
-        </ul>
+        <div class="row">
+            <div class="col-4"> 
+            </div>
+            <div class="col-4" style="text-align:center">
+                <h1>Contacts</h1>
+                <a th:href="@{/createContact}">create a new contact</a>
+                <ul class="list-group" th:each="contact: ${contacts}">
+                    <li class="list-group-item" th:text="${contact}"></li>
+                    <a class="btn btn-primary" th:href="@{/updateContact/{id}(id=${contact.contactId})}" style="padding: 3px; margin-bottom: 2px;">Update</a>
+                    <a class="btn btn-primary" th:href="@{/deleteContact/{id}(id=${contact.contactId})}" style="padding: 3px">Delete</a>
+                </ul>
+            </div>
+            <div class="col-4">  
+            </div>
+        </div>
+
     </div>
 </body>
 

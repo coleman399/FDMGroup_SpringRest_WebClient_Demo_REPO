@@ -28,4 +28,12 @@ public class ContactService {
     public Contact generateContact(Contact contact) {
         return contactClient.generateContact(contact);
     }
+
+	public Contact amendContact(Long id, Contact contact) {
+        return contactClient.amendContact(id, contact);
+	}
+
+    public void removeContact(Long id) {
+        contactClient.removeContact(id);
+    }
 }
