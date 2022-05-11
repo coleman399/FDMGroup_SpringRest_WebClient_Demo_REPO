@@ -38,8 +38,9 @@ public class ContactWebClient implements ContactClient {
 
     @Override
     public Contact generateContact(Contact contact) {
-        // TODO Auto-generated method stub
-        return null;
+
+        return webClient.post().uri(builder -> builder.path("/api/v1/contacts").build()).bodyValue(contact).retrieve()
+                .bodyToMono(Contact.class).block();
     }
 
     @Override

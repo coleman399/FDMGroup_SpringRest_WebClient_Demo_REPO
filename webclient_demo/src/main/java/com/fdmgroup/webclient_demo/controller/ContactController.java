@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class ContactController {
@@ -33,5 +34,17 @@ public class ContactController {
         Contact foundContact = contactService.retrieveContact(contactId);
         model.addAttribute("contact", foundContact);
         return "display-contact";
+    }
+    
+    @GetMapping("/createContact")
+    public String goToCreateContactPage(Model model) {
+        model.addAttribute("contact", new Contact());
+        return "create-contact";
+    }
+
+    @PostMapping("/createContact")
+    public String createContact(Model model, Contact contact) {
+        Contact createdContact = contactService.generateContact(contact);
+        return "redirect:/";
     }
 }

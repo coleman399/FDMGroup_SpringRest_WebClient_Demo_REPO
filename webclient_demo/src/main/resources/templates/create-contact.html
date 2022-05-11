@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
-    <title>🌟 Index - Contacts 🌟</title>
+    <title>🌟 Create Contact 🌟</title>
     <meta name="description" content="write a description here..." />
     <meta name="keywords" content="search engines use these keywords to find websites" />
     <meta name="author" content="self-explanatory" />
@@ -18,11 +18,14 @@
 
 <body>
     <div class="container-fluid">
-        <h1>Contacts</h1>
-        <a th:href="@{/createContact}">create a new contact</a>
-        <ul class="list-group" th:each="contact: ${contacts}">
-            <li class="list-group-item" th:text="${contact}"></li>
-        </ul>
+        <h1>Create Contact</h1>
+        <form th:action="@{/createContact}" method="post" th:object="${contact}">
+            <input type="text" th:field="*{firstName}" placeholder="First Name">
+            <input type="text" th:field="*{middleName}" placeholder="Middle Name">
+            <input type="text" th:field="*{lastName}" placeholder="Last Name">
+            <input type="text" th:field="*{phoneNumber}" placeholder="Phone Number">
+            <input type="submit" value="CREATE">
+        </form>
     </div>
 </body>
 
