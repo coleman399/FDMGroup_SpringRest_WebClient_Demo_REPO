@@ -2,7 +2,6 @@ package com.fdmgroup.webclient_demo.client;
 
 import java.util.List;
 
-import com.fdmgroup.exception.ContactNotFoundException;
 import com.fdmgroup.webclient_demo.model.Contact;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.reactive.function.client.ClientResponse;
 import org.springframework.web.reactive.function.client.WebClient;
 
-import reactor.core.publisher.Mono;
 
 @Controller
 public class ContactWebClient implements ContactClient {
